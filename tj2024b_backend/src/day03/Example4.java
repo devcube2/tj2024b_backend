@@ -133,7 +133,7 @@ public class Example4 {
 		int outCarHour = scan.nextInt();
 		System.out.print("출차시간의 분을 입력해주세요 : ");
 		int outCarMinute = scan.nextInt();
-		if (outCarHour < 0 || outCarHour > 12 || outCarMinute < 0 || outCarMinute > 60) {
+		if (outCarHour < 0 || outCarHour > 24 || outCarMinute < 0 || outCarMinute > 60) {
 			System.out.println("출차시간 오류");
 		} else if (inCarHour > outCarHour) {
 			System.out.println("출차시간 오류");
