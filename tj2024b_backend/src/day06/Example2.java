@@ -41,31 +41,28 @@ public class Example2 {
 				if (콜라재고 > 0) {
 					콜라구매개수++;
 					콜라재고--;
+					System.out.println("콜라1개 담았습니다.");
 				} else {
 					System.out.println("** 재고가 부족합니다. **");
-					break;
 				}
-				System.out.println("콜라1개 담았습니다.");
 				break;
 			case 2:
 				if (사이다재고 > 0) {
 					사이다구매개수++;
 					사이다재고--;
+					System.out.println("사이다1개 담았습니다.");
 				} else {
 					System.out.println("** 재고가 부족합니다. **");
-					break;
 				}
-				System.out.println("사이다1개 담았습니다.");
 				break;
 			case 3:
 				if (환타재고 > 0) {
 					환타구매개수++;
 					환타재고--;
+					System.out.println("환타1개 담았습니다.");
 				} else {
 					System.out.println("** 재고가 부족합니다. **");
-					break;
 				}
-				System.out.println("환타1개 담았습니다.");
 				break;
 			case 4:
 				int 콜라값 = 콜라구매개수 * 콜라가격;
