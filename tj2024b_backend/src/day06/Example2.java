@@ -43,6 +43,7 @@ public class Example2 {
 					콜라재고--;
 				} else {
 					System.out.println("** 재고가 부족합니다. **");
+					break;
 				}
 				System.out.println("콜라1개 담았습니다.");
 				break;
@@ -52,6 +53,7 @@ public class Example2 {
 					사이다재고--;
 				} else {
 					System.out.println("** 재고가 부족합니다. **");
+					break;
 				}
 				System.out.println("사이다1개 담았습니다.");
 				break;
@@ -59,6 +61,7 @@ public class Example2 {
 				if (환타재고 > 0) {
 					환타구매개수++;
 					환타재고--;
+					break;
 				} else {
 					System.out.println("** 재고가 부족합니다. **");
 				}
