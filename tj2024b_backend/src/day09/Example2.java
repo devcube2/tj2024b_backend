@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class Example2 {
 	public static void main(String[] args) {
-		Members members = new Members(2); // 최대 100명의 회원관리
+		Members members = new Members(100); // 최대 100명의 회원관리
 
 		Scanner scan = new Scanner(System.in);
 		while (true) {
