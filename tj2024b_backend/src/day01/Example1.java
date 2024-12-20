@@ -20,7 +20,7 @@ public class Example1 {
 		System.out.println( level2 );
 			// - [1분복습] int year = 2018 ;
 			// - [1분복습] 1(숫자로시작x),3(키워드)
-		
+		// test
 	}
 
 }
