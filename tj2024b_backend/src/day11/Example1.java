@@ -33,7 +33,7 @@ public class Example1 {
 					System.out.println(bs.login(scan));
 				} // if end
 			} else {
-				System.out.print("1.등록 2.출력");
+				System.out.print("1.등록 2.출력 3.로그아웃");
 
 				int choose = scan.nextInt();
 				if (choose == 1) {
@@ -42,7 +42,10 @@ public class Example1 {
 				} else if (choose == 2) {
 					// 출력함수 호출
 					bs.boardPrint(boards);
+				} else if (choose == 3) {
+					bs.login = false;
 				} // if end
+				
 			}
 		} // while end
 	} // main end
