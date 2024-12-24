@@ -6,11 +6,15 @@ public class Book {
 	private String author; // 책 저자
 	private int price; // 책 가격
 	private boolean hasBook; // 대여중인지 여부
+	private Member hasBookMember; // 대여자
 	
-	public Book(String name, String author, int price) {
+	public Book(int no, String name, String author, int price) {
+		setNo(no);
 		setName(name);
 		setAuthor(author);
-		setPrice(price);		
+		setPrice(price);
+		setHasBook(true); // 북객체 첫 생성이니 아무도 대여받지 않았음
+		setHasBookMember(null); // 북객체 첫 생성이니 아무도 대여받지 않았음
 	}
 	
 	public void setNo(int no) {
@@ -42,5 +46,11 @@ public class Book {
 	}
 	public boolean getHasBook() {
 		return hasBook;
+	}
+	public void setHasBookMember(Member hasBookMember) {
+		this.hasBookMember = hasBookMember;
+	}
+	public Member getHasBookMember() {
+		return hasBookMember;
 	}
 }
