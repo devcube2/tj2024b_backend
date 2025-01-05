@@ -8,9 +8,11 @@ import java.sql.SQLException;
 
 public class Dao {
 	// + DB연동 정보
-	private String DBURL = "jdbc:mysql://localhost:3306/mydb0103";
+//	private String DBURL = "jdbc:mysql://localhost:3306/mydb0103";
+//	String url = "jdbc:mysql://121.3.5.4:3306/yourDatabaseName?useSSL=false&serverTimezone=UTC";
+	private String DBURL = "jdbc:mysql://140.245.79.114:3306/testdb";
 	private String DBID = "root";
-	private String DBPWD = "root";
+	private String DBPWD = "1234";
 	// + JDBC 인터페이스
 	private Connection conn;
 
@@ -59,10 +61,13 @@ public class Dao {
 	}
 
 	// 2. select
-	public void select() {
-		try {
+	public String select() {
+		String s = null;
+		
+		try {			
+			
 			// (1) SQL 작성
-			String sql = "select * from user";
+			String sql = "select * from user where uno=1";
 			// (2) SQL 기재한다.
 			PreparedStatement ps = conn.prepareStatement(sql);
 			// (3) 기재된 SQL 실행 하고 조회 결과를 조작 가능한 인스턴스 반환 함수 , ResultSet 반환
@@ -71,15 +76,19 @@ public class Dao {
 			ResultSet rs = ps.executeQuery();
 			// (5) 반환 결과를 조작하기 .next() : 조회 결과에서 다음 레코드로 이동 함수 , 다음레코드 존재하면 true 다음레코드 없으면 false
 //			rs.next(); // 즉] 6개의 레코드가 존재하면 .next() 함수는 6번 실행 가능하다.
+			
 			while ( rs.next() ) { // 첫번째 레코드 부터 마지막 레코드까지 다음 레코드로 하나씩 이동
 				// rs.get타입("속성명"); // 현재 레코드의 속성 값 반환 함수. 타입 일치.
 				System.out.printf("%d \t %s \t %s \n", 
 						rs.getInt("uno"), rs.getString("uname"), rs.getInt("uage"));
+				s = rs.getString("uname");
+				System.out.printf("dao - %s : %d\n", s, System.identityHashCode(s));
 			}			
 		} catch (SQLException e) {
 			System.out.println(">> " + e);
 		}
-
+		
+		return s;
 	}
 
 	// 3. update, delete
