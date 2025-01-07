@@ -49,7 +49,7 @@ public class MemberDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			System.out.println(e); // aa
+			System.out.println(e); // aadd
 		}
 
 		return false;
