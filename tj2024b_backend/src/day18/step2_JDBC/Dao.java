@@ -55,7 +55,7 @@ public class Dao {
 				return;
 			}
 		} catch (SQLException e) {
-			System.out.println(">> " + e);
+			System.out.println(">> " + e);			
 		}
 		System.out.println("[insert 실패]");
 	}
