@@ -120,8 +120,7 @@ public class MemberView {
 //	5. 로그아웃
 	public void logOut() {
 		MemberController.getInstance().logOut();
-		System.out.println("로그아웃 되었습니다.");
-		run();
+		System.out.println("로그아웃 되었습니다.");		
 	} // f end
 	
 //	6. 내정보조회
