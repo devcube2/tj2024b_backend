@@ -27,9 +27,29 @@
 			Connection conn = DriverManager.getConnection("mariaDB");
 			
 			1. 추상메소드 :
-				.prepareStatement("SQL문법") : 연동된 DB에 SQL문법 기재
-			
+				conn.prepareStatement("SQL문법") : 연동된 DB에 SQL문법 기재 하고 PreparedStatement 반환			
 		
-		2. preparedStatement
+		2. preparedStatement 인터페이스
+			1. 추상메소드 :
+				ps.setXXX( ?순서번호 , 값 )				 : SQL문의 존재하는 ?(와일드카드) 의 순번 의 값 대입
+					* SQL : insert into member( mid , mpwd , mname ) values ( ? , ? , ? );
+						ps.set타입( ?번호 , 값 ) 	 
+						ps.setString( 1 , "qwe1234" )	 : SQL 존재하는 첫번째 ? 에 "qwe1234" 대입
+						ps.setString( 2 , "a1234" )		 : SQL 존재하는 두번째 ? 에 "a1234" 대입
+						ps.setString( 3 , "유재석" )	 : SQL 존재하는 세번째 ? 에 "유재석" 대입
+							-> insert into member( mid , mpwd , mname ) values ( "qwe1234" , "a1234" , "유재석" )
+				ps.executeQuery()						 : select 기재된 SQL를 실행하고 , 처리된 레코드를 조작할 수 있는 ResultSet 반환
+				ps.executeUpdate()						 : insert, update, delete 기재된 SQL 를 실행하고 , 처리된 레코드 수 반환				
 		
-		3. ResultSet
+		3. ResultSet 인터페이스
+			1. 추상메소드
+				rs.next();						 : select 결과 조회된 레코드들 중에서 (아래)다음 레코드 이동 , 다음레코드가 있으면 true 없으면 false
+					* 레코드 : 행/가로 단위 데이터들
+					* 만약에 레코드(행) 6개 이면 next는 6번 실행이 가능하다.				
+					* 	while ( rs.next() ) 회원목록보기 , 게시물 전체조회				
+						if ( rs.next() ) : 아이디찾기 , 비밀번호찾기 , 로그인 , 게시물개별조회
+				
+				rs.getXXX("속성명")				 : 현재 ResultSet 가 조회중인 레코드에서 속성값 반환
+					* 속성명/표제목 : 값의 대표적인 이름 , ex]나이 , 속성값 : 값 , ex] 39
+					* 변수명/변수값 , 속성명/속성값 , 멤버변수명/멤버변수값 , 필드명/필드값
+					* XXX : 속성명 의 타입 , SQL int -> JAVA .getInt() , SQL varchar --> JAVA .getString()

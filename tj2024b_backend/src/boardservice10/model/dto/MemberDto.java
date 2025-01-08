@@ -1,94 +1,78 @@
 package boardservice10.model.dto;
 
 public class MemberDto { // DTO : 서로 다른 레이어(MVC패턴)들 간의 데이터를 이동하는 객체
-	// * 주로 데이터베이스 테이블의 속성과 동일하다. +커스텀 가능
-	// * 주로 DTO 는 멤머변수 private 접근제한자 사용한다. private 이란? 다른 클래스에서 접근 불가능.
-	// - getter/setter 메소드 : private 멤버변수를 다른 클래스에서 간접접근 하기 위한 메소드
-	// - toString() 메소드 : 객체 호출시 참조(주소)값 대신 멤버변수 값을 반환 하는 메소드 * 객체 내용물 확인용
-	// * 주로 DTO 는 생성자를 기본적으로 2개( 디폴트 , 풀생성자 ) , 그외 커스텀 , 생성자 이란 ? new(인스턴스/객체)를 생성할때
-	// 사용되는 초기화 함수
-
-	// 1. 멤버변수/필드/속성 : 객체가 가질수 있는 고유한 값 를 저장하는 속성명
-	private int no; // 회원번호
-	private String id; // 아이디
-	private String pwd; // 비밀번호
-	private String name; // 이름
-	private String phone; // 연락처
-	private String date; // 가입일
-
-	// 2. 생성자
-	public MemberDto() {
+//	* 주로 데이터베이스 테입르의 속성과 동일하다. + 커스텀 가능
+//	* 주로 DTO는 멤버변수 private 접근제한자 사용한다. private : 다른 클래스에서 접근 불가능
+//		- getter/setter 메소드 : private 멤버변수를 다른 클래스에서 간접접근 하기 위한 메소드
+//		- toString() 메소드 : 객체 호출시 참조(주소)값 대신 멤버변수 값을 반환하는 메소드 * 객체 내용물 확인용
+//	* 주로 DTO는 생성자를 기본적으로 2개( 디폴트 , 풀생성자 ) , 그외 커스텀 , 생성자 : new(인스턴스/객체)를 생성할 때 사용되는 초기화 함수 역할
+//		- 오버로딩 : 동일한 메소드명을 여러개 선언 가능 , 전제조건 : 매개변수의 타입, 개수 , 순서
+	
+//	1. 멤버변수/필드/속성 : 객체가 가질 수 있는 고유한 값을 저장하는 속성명
+	private String mid;
+	private String mpwd;
+	private String mname;
+	private String mphone;
+	private String mdate;
+	
+//	2. 생성자
+	public MemberDto(){}
+	public MemberDto(String mid, String mpwd, String mname, String mphone, String mdate) {
+			super();
+			this.mid = mid;
+			this.mpwd = mpwd;
+			this.mname = mname;
+			this.mphone = mphone;
+			this.mdate = mdate;
+		}
+	
+//	+ 회원가입에 적합한 생성자
+	public MemberDto(String mid, String mpwd, String mname, String mphone) {
+		super();
+		this.mid = mid;
+		this.mpwd = mpwd;
+		this.mname = mname;
+		this.mphone = mphone;
 	}
-
-	public MemberDto(int no, String id, String pwd, String name, String phone, String date) {
-		this.no = no;
-		this.id = id;
-		this.pwd = pwd;
-		this.name = name;
-		this.phone = phone;
-		this.date = date;
-	}
-
-	// + 회원가입에 적합한 생성자
-	public MemberDto(String id, String pwd, String name, String phone) {
-		this.id = id;
-		this.pwd = pwd;
-		this.name = name;
-		this.phone = phone;
-	}
-
-	// 3. 메소드 , getter / setter , toString()
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
+	
+	//	3. 메소드 , getter/setter , toString()
+		// 자동완성 : 클래스 { } 안에서 빈칸에 오른쪽 클릭 -> [source] -> [ Generate Constructor ]
+		// 자동완성 : 클래스 { } 안에서 빈칸에 오른쪽 클릭 -> [source] -> [ Generate toString ]
 	@Override
 	public String toString() {
-		return "MemberDto [no=" + no + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", date="
-				+ date + "]";
+		return "MemberDto [mid=" + mid + ", mpwd=" + mpwd + ", mname=" + mname + ", mphone=" + mphone + ", mdate="
+				+ mdate + "]";
 	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+	public String getMpwd() {
+		return mpwd;
+	}
+	public void setMpwd(String mpwd) {
+		this.mpwd = mpwd;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getMphone() {
+		return mphone;
+	}
+	public void setMphone(String mphone) {
+		this.mphone = mphone;
+	}
+	public String getMdate() {
+		return mdate;
+	}
+	public void setMdate(String mdate) {
+		this.mdate = mdate;
+	}
+	
+	
 }
