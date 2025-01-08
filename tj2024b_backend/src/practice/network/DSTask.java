@@ -79,7 +79,7 @@ public class DSTask implements Runnable {
 	}
 
 	public final void println(String content) throws IOException {
-		writer.println(content);
+		writer.println(content);		
 	}
 
 	@Override // 이 메소드는 상속받은 클래스가 사용하면 안된다. 특정 메소드만 상속 자체를 막을수는 없어서 그냥 두었다.
