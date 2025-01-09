@@ -15,7 +15,7 @@ public class MemberView {
 	
 	private Scanner scan = new Scanner(System.in);
 	
-//	0. 로그인메뉴
+//	0. (로그인 하기전) 메뉴 메뉴 메소드
 	public void run() {
 		
 		while(true) {
@@ -73,8 +73,9 @@ public class MemberView {
 		boolean result = MemberController.getInstance().logIn( memberDto );
 		
 		if( result ) { 
-			System.out.println("로그인 성공"); 
-			menu();
+			System.out.println("로그인 성공");
+			// BoardView 메인메뉴 메소드 호출
+			BoardView.getInstance().index();
 		}
 		else { System.out.println("로그인 실패"); }
 	} // f end
@@ -124,7 +125,7 @@ public class MemberView {
 	} // f end
 	
 //	6. 내정보조회
-	public void myInfo() {
+	public int myInfo() {
 		MemberDto result = MemberController.getInstance().myInfo( );
 		
 		System.out.println("===== 내정보조회 =====");
@@ -136,15 +137,24 @@ public class MemberView {
 		while(true) {
 			System.out.print("1.회원수정 2.회원탈되 3.뒤로가기 : ");
 			int choose2 = scan.nextInt();
-			if( choose2 == 1 ) {  }
-			else if( choose2 == 2 ) { delete(); }
+			if( choose2 == 1 ) {  
+				update();				
+			}
+			else if( choose2 == 2 ) { 
+				int state = delete();
+				if ( state == 0 ) {
+					return 0;
+				}
+			}
 			else if( choose2 == 3 ) { break; }
 		}
+		
+		return 1;
 		
 	} // f end
 	
 //	7. 회원탈퇴 화면 메소드
-	public void delete() {
+	public int delete() {
 		System.out.println("===== 회월탈퇴 =====");
 		System.out.println("정말 회원 탈퇴를 하실건가요?");
 		System.out.print("0.예 1.취소 : "); // 버튼 클릭이 없으므로 키보드 입력으로 처리해야한다.
@@ -152,10 +162,26 @@ public class MemberView {
 		int choose2 = scan.nextInt();
 		if( choose2 == 0 ) { 
 			MemberController.getInstance().delete(); // 탈퇴처리 컨트롤러 요청\
-			logOut();
+			return 0; // 탈퇴 했다.
 		}
-		else {  }
+		return 1;
 	} // f end
 	
-	
+	// 8. 회원수정 화면 메소드
+	public void update() {
+		// 순서 : 1. 입력 -> 2. 객체화(선택) -> 3.컨트롤러 에게 전달 하고 응답 결과 받기 -> 4. 컨트롤러 의 결과에 따른 처리
+		System.out.println("새로운 비밀번호 : ");	String mpwd = scan.next();
+		System.out.println("새로운 이름 : ");		String mname = scan.next();
+		System.out.println("새로운 전화번호 : ");	String mphone = scan.next();
+		MemberDto memberDto = new MemberDto();
+		memberDto.setMpwd(mpwd);
+		memberDto.setMname(mname);
+		memberDto.setMphone(mphone);
+		boolean result = MemberController.getInstance().update(memberDto);
+		if (result) {
+			System.out.println("수정 완료");
+		} else {
+			System.out.println("수정 실패");
+		}
+	}
 }

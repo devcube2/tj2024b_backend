@@ -9,6 +9,7 @@ public class MemberDto { // DTO : 서로 다른 레이어(MVC패턴)들 간의 �
 //		- 오버로딩 : 동일한 메소드명을 여러개 선언 가능 , 전제조건 : 매개변수의 타입, 개수 , 순서
 	
 //	1. 멤버변수/필드/속성 : 객체가 가질 수 있는 고유한 값을 저장하는 속성명
+	private int mno;
 	private String mid;
 	private String mpwd;
 	private String mname;
@@ -72,6 +73,12 @@ public class MemberDto { // DTO : 서로 다른 레이어(MVC패턴)들 간의 �
 	}
 	public void setMdate(String mdate) {
 		this.mdate = mdate;
+	}
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 	
 	
