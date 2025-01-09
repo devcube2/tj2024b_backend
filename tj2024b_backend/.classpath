@@ -7,6 +7,10 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="src/database/mysql-connector-j-9.1.0.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="src/database/mariadb-java-client-3.5.1.jar"/>
+=======
+	<classpathentry kind="lib" path="src/database/json-simple-1.1.1.jar"/>
+>>>>>>> branch 'master' of https://github.com/devcube2/tj2024b_backend
 	<classpathentry kind="output" path="bin"/>
 </classpath>
