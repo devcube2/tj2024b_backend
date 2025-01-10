@@ -22,7 +22,9 @@ public class BoardDao extends Dao {
 		ArrayList<BoardDto> result = new ArrayList<>(); // * 조회된 레코드(=BoardDto) 한개씩 저장하여 여러개 레코드를 저장하는 리스트 객체
 
 		try {
-			String sql = "select * from board";
+			String sql = "select b.* , c.cname , m.mid from board as b"
+					+ "	inner join category as c on b.cno = c.cno"
+					+ " inner join member m on b.mno = m.mno";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -46,7 +48,10 @@ public class BoardDao extends Dao {
 	// 2. 개별 게시물 SQL 처리 메소드
 	public BoardDto findById(int bno) {
 		try {
-			String sql = "select * from board where bno = ?";
+			String sql = "select b.* , c.cname , m.mid from board as b"
+					+ "	inner join category as c on b.cno = c.cno"
+					+ " inner join member m on b.mno = m.mno"
+					+ " where b.bno = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, bno);
 			ResultSet rs = ps.executeQuery();
