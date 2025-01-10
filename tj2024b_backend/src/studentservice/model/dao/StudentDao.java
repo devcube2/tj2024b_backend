@@ -132,36 +132,4 @@ public class StudentDao {
 		
 		return execute(sql);
 	}
-
-	// 회원번호 검색
-	public int selectMno(String id) {
-		try {
-			String sql = String.format("select mno from member where mid = '%s'", id);
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();			
-			if (!rs.next())
-				return -1; // 아무것도 조회되지 않았음
-			return rs.getInt("mno");
-		} catch (SQLException e) {
-			System.out.println(">> " + e);
-		}
-
-		return -1;
-	}
-
-	// 아이디 중복 체크
-	public boolean selectCheckId(String id) {
-		boolean result = false;
-		
-		try {
-			String sql = String.format("select mid from member where mid = '%s'", id);
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			result = rs.next();
-		} catch (SQLException e) {
-			System.out.println(">> " + e);
-		}
-
-		return result;
-	}
 }
