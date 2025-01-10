@@ -117,13 +117,13 @@ public class StudentDao {
 		
 		switch (수정과목) {
 		case 1:
-			sql = String.format("update 학생테이블 set 국어점수 = %d", 수정점수);
+			sql = String.format("update 학생테이블 set 국어점수 = %d where 학생명 = '%s'", 수정점수, 학생명);
 			break;
 		case 2:
-			sql = String.format("update 학생테이블 set 영어점수 = %d", 수정점수);
+			sql = String.format("update 학생테이블 set 영어점수 = %d where 학생명 = '%s'", 수정점수, 학생명);
 			break;			
 		case 3:
-			sql = String.format("update 학생테이블 set 수학점수 = %d", 수정점수);
+			sql = String.format("update 학생테이블 set 수학점수 = %d where 학생명 = '%s'", 수정점수, 학생명);
 			break;
 		default:
 			System.out.println("수정과목을 잘못 선택하였습니다.");
