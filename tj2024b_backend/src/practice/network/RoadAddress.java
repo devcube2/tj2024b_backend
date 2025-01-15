@@ -18,7 +18,8 @@ public class RoadAddress {
             String apiKey = "devU01TX0FVVEgyMDI1MDEwMzIwMTczMzExNTM4MTk=";
 
             // 검색할 주소 키워드
-            String keyword = "인천광역시 미추홀구";
+//          String keyword = "인천광역시 미추홀구";
+            String keyword = "경기 부천시 소사구 경인로 10번길 25-44";
 
             // API URL 생성
             String apiURL = "https://www.juso.go.kr/addrlink/addrLinkApi.do";
@@ -77,13 +78,19 @@ public class RoadAddress {
             JSONArray jusoArray = (JSONArray) results.get("juso");
             for (Object obj : jusoArray) {
                 JSONObject address = (JSONObject) obj;
+                System.out.println(address);
                 String roadAddr = (String) address.get("roadAddr");
                 String jibunAddr = (String) address.get("jibunAddr");
                 String zipNo = (String) address.get("zipNo");
+                String si = (String) address.get("siNm");        
+                String sgg = (String) address.get("sggNm");                
 
                 System.out.println("도로명 주소: " + roadAddr);
                 System.out.println("지번 주소: " + jibunAddr);
                 System.out.println("우편번호: " + zipNo);
+                System.out.println("시: " + si);
+                System.out.println("구: " + sgg);
+//                System.out.println("시:  + " + si);
                 System.out.println("-------------------------");
             }
         } catch (Exception e) {
